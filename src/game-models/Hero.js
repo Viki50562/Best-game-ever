@@ -8,12 +8,18 @@ class Hero {
 
   moveLeft() {
     // Идём влево.
-    this.position -= 1;
+    if (this.position > 0)
+    {
+      this.position -= 1;
+    }
   }
 
   moveRight() {
     // Идём вправо.
-    this.position += 1;
+    if (this.position < 50) // FIX ME
+    {
+      this.position += 1;
+    }
   }
 
   attack() {
