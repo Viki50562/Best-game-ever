@@ -2,7 +2,7 @@
 // Вместо keypress можно использовать и стандартный readline.
 // Главное не используй всё вместе!
 
-const keypress = require("keypress");
+const keypress = require('keypress');
 
 // Управление.
 // Настроим соответствия нажатий на клавиши и действий в игре.
@@ -17,25 +17,25 @@ class Keyboard {
       space: () => this.boomerang.fly(),
     };
   }
-}
 
-// Какая-то функция.
+  // Какая-то функция.
 
-function runInteractiveConsole() {
-  keypress(process.stdin);
-  process.stdin.on('keypress', (ch, key) => {
-    if (key) {
+  runInteractiveConsole() {
+    keypress(process.stdin);
+    process.stdin.on('keypress', (ch, key) => {
+      if (key) {
       // Вызывает команду, соответствующую нажатой кнопке.
-      if (key.name in keyboard) {
-        this.keyboard[key.name]();
+        if (key.name in this.keyboard) {
+          this.keyboard[key.name]();
+        }
+        // Прерывание программы.
+        if (key.ctrl && key.name === 'c') {
+          process.exit();
+        }
       }
-      // Прерывание программы.
-      if (key.ctrl && key.name === 'c') {
-        process.exit();
-      }
-    }
-  });
-  process.stdin.setRawMode(true);
+    });
+    process.stdin.setRawMode(true);
+  }
 }
 
 // Давай попробуем запустить этот скрипт!
