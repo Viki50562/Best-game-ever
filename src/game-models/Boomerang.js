@@ -3,7 +3,7 @@
 // Тогда можно будет создать класс Weapon и воспользоваться наследованием!
 
 class Boomerang {
-  constructor() {
+  constructor(hero, heroPosition) {
     this.skin = '🌀';
     this.hero = hero;
     this.bomerangFly = false;
