@@ -35,7 +35,7 @@ class Hero {
 
   die() {
     this.skin = '💀';
-    console.log('YOU ARE DEAD!💀');
+    console.log("\x1b[45m", 'ВСЕМ ПОКЕДОВА!💀');
     process.exit();
   }
 }
