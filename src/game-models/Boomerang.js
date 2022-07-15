@@ -4,7 +4,7 @@
 
 class Boomerang {
   constructor(hero, heroPosition) {
-    this.skin = '💣';
+    this.skin = '🛒';
     this.hero = hero;
     this.boomerangFly = false;
     this.boomerangStay = false;

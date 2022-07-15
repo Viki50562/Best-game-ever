@@ -26,7 +26,7 @@ class Hero {
   }
 
   generateHeroSkin() {
-    this.skin = '🤠';
+    this.skin = '🦹‍♂️';
   }
 
   generateDieCrest() {
