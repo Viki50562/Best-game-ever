@@ -8,13 +8,13 @@ const keypress = require('keypress');
 // Настроим соответствия нажатий на клавиши и действий в игре.
 
 class Keyboard {
-  constructor(hero, boomerang) {
-    this.hero = hero;
+  constructor(boomerang, hero) {
     this.boomerang = boomerang;
+    this.hero = hero;
     this.keyboard = {
-      a: () => this.hero.moveLeft(),
-      d: () => this.hero.moveLeft(),
       space: () => this.boomerang.fly(),
+      d: () => this.hero.moveRight(),
+      a: () => this.hero.moveLeft(),
     };
   }
 
