@@ -40,6 +40,4 @@ class Keyboard {
 
 // Давай попробуем запустить этот скрипт!
 
-runInteractiveConsole();
-
 module.exports = Keyboard;
