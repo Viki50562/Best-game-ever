@@ -21,7 +21,7 @@ class Enemy {
     this.enemyDie = true;
     this.skin = '💀';
     // this.position = '?';
-    console.log('Enemy is dead!');
+    console.log('\x1b[36m%s\x1b[0m', 'ТЕЛЕЖКА УНИЧТОЖИЛА ВРАГА!');
   }
 }
 
