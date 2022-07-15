@@ -1,12 +1,10 @@
 // Враг.
-const Hero = require('./Hero');
-const Boomerang = require('./Boomerang')
 
 class Enemy {
   constructor() {
     this.generateSkin();
-    this.position = arr.length;
-    this.enemyDie = false;
+    this.enemydie = false;
+    this.position = trackLength;
   }
 
   generateSkin() {
@@ -21,9 +19,9 @@ class Enemy {
 
   die() {
     this.enemyDie = true;
+    this.skin = '😡';
     // this.position = '?';
     console.log('Enemy is dead!');
-
   }
 }
 

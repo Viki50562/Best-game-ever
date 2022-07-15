@@ -2,22 +2,20 @@
 
 class Hero {
   constructor({ position }) {
-    this.skin = '🤠'; // можете использовать любые emoji '💃'
+    this.generateHeroSkin();
     this.position = position;
   }
 
   moveLeft() {
     // Идём влево.
-    if (this.position > 0)
-    {
+    if (this.position > 0) {
       this.position -= 1;
     }
   }
 
   moveRight() {
     // Идём вправо.
-    if (this.position < 50) // FIX ME
-    {
+    if (this.position < 50) {
       this.position += 1;
     }
   }
@@ -25,6 +23,14 @@ class Hero {
   attack() {
     // Атакуем.
     this.boomerang.fly();
+  }
+
+  generateHeroSkin() {
+    this.skin = '🤠';
+  }
+
+  generateDieCrest() {
+    this.skin = '💀';
   }
 
   die() {
