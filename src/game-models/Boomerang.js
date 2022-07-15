@@ -4,37 +4,35 @@
 
 class Boomerang {
   constructor(hero, heroPosition) {
-    this.skin = '🌀';
+    this.skin = '💣';
     this.hero = hero;
-    this.bomerangFly = false;
+    this.boomerangFly = false;
     this.boomerangStay = false;
-    this.position = heroPosition;
-    this.killEnemy = false;
+    this.position = heroPosition; // Установили бумеранги на позицию
+    this.killEnemy = false; // Событие определяющее убийство врага
   }
 
-  fly() {
+  fly() { // Попытка вернуть бумеранг
     this.position = this.hero.position;
-    this.bomerangFly = true;
-    const start = setInterval(() => {
+    this.boomerangFly = true;
+    const id = setInterval(() => {
       if (!this.killEnemy) {
         this.moveRight();
-      } else { this.moveLeft(start); }
+      } else {
+        this.moveLeft(id);
+      }
     }, 100);
-    // this.moveRight();
-    // this.moveLeft();
-  }
+  } // Конец
 
-  moveLeft(start) {
-    // Идём влево.
-    this.position -= 1;
+  moveLeft(id) {
+  //  if (this.position > 0)this.position -= 1;
     if (this.position === this.hero.position) {
-      clearInterval(start);
+      clearInterval(id);
       this.killEnemy = false;
     }
   }
 
   moveRight() {
-    // Идём вправо.
     this.position += 1;
   }
 }
