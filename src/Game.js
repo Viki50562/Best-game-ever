@@ -10,7 +10,7 @@ const Keyboard = require('./keyboard');
 
 // Основной класс игры.
 // Тут будут все настройки, проверки, запуск.
-
+console.log('billyHarington is my love');
 class Game {
   constructor({ trackLength }) {
     this.trackLength = trackLength;
