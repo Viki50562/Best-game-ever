@@ -1,12 +1,13 @@
 // Импортируем всё необходимое.
 // Или можно не импортировать,
 // а передавать все нужные объекты прямо из run.js при инициализации new Game().
-
+const player = require ('play-sound')((opts = {}));
 const Hero = require('./game-models/Hero');
 const Enemy = require('./game-models/Enemy');
 const Boomerang = require('./game-models/Boomerang'); // Разкоменчиваем запись
 const View = require('./View');
 const Keyboard = require('./keyboard');
+
 
 // Основной класс игры.
 // Тут будут все настройки, проверки, запуск.
@@ -22,20 +23,16 @@ class Game {
     this.keyboard = new Keyboard(this.boomerang, this.hero);
     this.regenerateTrack();
   }
-  
+
   regenerateTrack() {
     // Сборка всего необходимого (герой, враг(и), оружие)
     // в единую структуру данных
     this.track = (new Array(this.trackLength)).fill(' ');
     if (this.boomerang.boomerangFly) {
-      this.track[this.boomerang.position] = this.boomerang.skin; 
+      this.track[this.boomerang.position] = this.boomerang.skin;
     }
     this.track[this.hero.position] = this.hero.skin;
-    this.track[this.enemy.position] = this.enemy.skin; // Render врага, устанавливаем в метод создание врага.
-   // Boomerang, инициализация и его позиция.
-    // this.boomerang.fly(); // Попробуем запустить бумеранг.
-    // this.enemy.moveLeft() // Двигаем врага.
-
+    this.track[this.enemy.position] = this.enemy.skin;
   }
 
   check() {
@@ -44,33 +41,34 @@ class Game {
     // }
     if (this.hero.position === this.enemy.position) {
       this.hero.generateDieCrest();
-      this.hero.die()
+      this.hero.die();
       // this.regenerateTrack()
     }
     if (this.boomerang.position >= this.enemy.position) {
       this.enemy.die();
+      player.play('src/sounds/krik.mp3');
       this.boomerang.boomerangFly = false;
       this.boomerang.position = 0;
       this.boomerang.killEnemy = true;
       setTimeout(() => {
-      this.enemy = new Enemy(this.trackLength)
-      }, 100)
+        this.enemy = new Enemy(this.trackLength);
+      }, 100);
       // this.regenerateTrack()
     }
     if (this.enemy.position !== this.boomerang.position) {
-      this.enemy.moveLeft()
+      this.enemy.moveLeft();
     }
   }
 
   play() {
-    this.keyboard.runInteractiveConsole()
+    this.keyboard.runInteractiveConsole();
 
     setInterval(() => {
       // Let's play!
       this.check();
       this.regenerateTrack();
       this.view.render(this.track);
-    }, 100);       // Добавляем интервал 100, для анимации
+    }, 100); // Добавляем интервал 100, для анимации
   }
 }
 

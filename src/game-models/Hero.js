@@ -1,4 +1,5 @@
 // Наш герой.
+const player = require ('play-sound')((opts = {}));
 
 class Hero {
   constructor({ position }) {
@@ -35,7 +36,8 @@ class Hero {
 
   die() {
     this.skin = '💀';
-    console.log("\x1b[45m", 'ВСЕМ ПОКЕДОВА!💀');
+    console.log('\x1b[45m', 'ВСЕМ ПОКЕДОВА!💀');
+    player.play('src/sounds/opa.mp3');
     process.exit();
   }
 }
